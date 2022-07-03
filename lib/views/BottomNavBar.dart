@@ -1,15 +1,13 @@
 // ignore_for_file: missing_return, file_names, must_be_immutable, require_trailing_commas
 
-import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:get/get.dart';
+import 'package:arzan/controllers/AddPageController.dart';
 import 'package:get_storage/get_storage.dart';
-import '../components/constants/constants.dart';
 import 'HomePage/HomePage.dart';
 import 'PaymentPage/PaymentPage.dart';
 import 'SearchPage/SearchPage.dart';
 import 'UserProfil/UserProfil.dart';
 import 'addProduct/AddRealEstatePage.dart';
+import 'package:arzan/views/others/index.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -20,6 +18,8 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int selectedIndex = 0;
+  final AddPageController addPageController = Get.put(AddPageController());
+
   final storage = GetStorage();
   @override
   void initState() {
@@ -51,6 +51,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           onTap: (index) async {
             setState(() {
               if (index == 2) {
+                addPageController.selectedPageIndex.value = 0;
                 Get.to(() => AddProductPage());
               } else {
                 selectedIndex = index;

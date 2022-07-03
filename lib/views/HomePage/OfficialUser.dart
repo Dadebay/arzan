@@ -29,6 +29,7 @@ class OfficialUsersHomePage extends StatelessWidget {
               return BrandCard(
                 index: index,
                 name: "Page Name",
+                followed: false,
               );
             },
           ),

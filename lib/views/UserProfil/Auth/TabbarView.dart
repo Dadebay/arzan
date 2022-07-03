@@ -29,7 +29,7 @@ class TabBarViewPage extends StatelessWidget {
                   width: 180,
                   decoration: const BoxDecoration(borderRadius: borderRadius25, color: Colors.white),
                   alignment: Alignment.center,
-                  child: Lottie.asset("assets/lottie/lf30_editor_qcvhsaqp.json", fit: BoxFit.cover, animate: true, width: 180, height: 180),
+                  child: Lottie.asset(logoJson, fit: BoxFit.cover, animate: true, width: 180, height: 180),
                 ),
               ),
             ),

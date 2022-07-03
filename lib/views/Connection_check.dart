@@ -103,7 +103,7 @@ class _MyCustomSplashScreenState extends State with TickerProviderStateMixin {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: Lottie.asset("assets/lottie/lf30_editor_qcvhsaqp.json", fit: BoxFit.cover, animate: true, width: 180, height: 180),
+                child: Lottie.asset(logoJson, fit: BoxFit.cover, animate: true, width: 180, height: 180),
               ),
             ),
           ),

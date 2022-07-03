@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use, duplicate_ignore, implementation_imports, avoid_positional_boolean_parameters, unnecessary_null_comparison, always_use_package_imports
 
-import 'package:arzan/views/Connection_check.dart';
 import 'package:arzan/views/others/index.dart';
 
 SnackbarController showSnackBar(String title, String subtitle, Color color) {
@@ -163,78 +162,4 @@ Widget dialogButton(String name, Function() onTap, bool color) {
           style: TextStyle(color: Colors.black, fontSize: 18, fontFamily: color ? normsProMedium : normsProSemiBold),
         )),
   );
-}
-
-Future<dynamic> selectCity() {
-  return Get.defaultDialog(
-      barrierDismissible: false,
-      title: "selectCityTitle".tr,
-      titleStyle: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold),
-      radius: 5,
-      titlePadding: const EdgeInsets.symmetric(vertical: 14),
-      contentPadding: const EdgeInsets.only(),
-      content: Column(
-        children: [
-          customDivider(),
-          TextButton(
-            onPressed: () {
-              Get.to(() => const MyCustomSplashScreen());
-            },
-            child: const Text(
-              "Ashgabat",
-              style: TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
-            ),
-          ),
-          customDivider(),
-          TextButton(
-            onPressed: () {
-              Get.to(() => const MyCustomSplashScreen());
-            },
-            child: const Text(
-              "Ahal",
-              style: TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
-            ),
-          ),
-          customDivider(),
-          TextButton(
-            onPressed: () {
-              Get.to(() => const MyCustomSplashScreen());
-            },
-            child: const Text(
-              "Balkan",
-              style: TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
-            ),
-          ),
-          customDivider(),
-          TextButton(
-            onPressed: () {
-              Get.to(() => const MyCustomSplashScreen());
-            },
-            child: const Text(
-              "Mary",
-              style: TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
-            ),
-          ),
-          customDivider(),
-          TextButton(
-            onPressed: () {
-              Get.to(() => const MyCustomSplashScreen());
-            },
-            child: const Text(
-              "Lebap",
-              style: TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
-            ),
-          ),
-          customDivider(),
-          TextButton(
-            onPressed: () {
-              Get.to(() => const MyCustomSplashScreen());
-            },
-            child: const Text(
-              "Daşoguz",
-              style: TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
-            ),
-          ),
-        ],
-      ));
 }

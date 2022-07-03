@@ -1,7 +1,8 @@
 // ignore_for_file: file_names, must_be_immutable
 
+import 'package:arzan/components/buttons/dialogs.dart';
 import 'package:arzan/components/constants/constants.dart';
-import 'package:arzan/components/constants/widgets.dart';
+import 'package:arzan/views/Connection_check.dart';
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -35,7 +36,9 @@ class Onboarding extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         verticalPosition: 0.85,
         onFinish: () {
-          selectCity();
+          selectCity(onTap: () {
+            Get.to(() => const MyCustomSplashScreen());
+          });
         },
         nextButtonBuilder: (BuildContext context) {
           return const Icon(

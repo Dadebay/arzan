@@ -139,7 +139,12 @@ class _AboutUsState extends State<AboutUs> {
           requestfocusNode: phoneFocusNode,
           isNumber: false,
         ),
-        PhoneNumber(mineFocus: phoneFocusNode, controller: phoneController, requestFocus: emailFocusNode),
+        PhoneNumber(
+          mineFocus: phoneFocusNode,
+          controller: phoneController,
+          requestFocus: emailFocusNode,
+          style: false,
+        ),
         CustomTextField(
           borderRadius: true,
           labelName: "email",

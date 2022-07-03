@@ -1,9 +1,11 @@
 // ignore_for_file: file_names
 
+import 'package:arzan/components/cards/latestProductCard.dart';
 import 'package:arzan/components/constants/constants.dart';
 import 'package:arzan/components/constants/widgets.dart';
 import 'package:arzan/components/searchCard.dart';
 import 'package:arzan/controllers/SettingsController.dart';
+import 'package:arzan/views/others/ProductProfil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -22,7 +24,7 @@ class _SearchPageState extends State<SearchPage> {
   TextEditingController searchController = TextEditingController();
 
   final ScrollController scrollCtrl = ScrollController();
-
+  bool typeOfView = true;
   @override
   void initState() {
     super.initState();
@@ -59,74 +61,64 @@ class _SearchPageState extends State<SearchPage> {
               customDivider(),
               subCategory(),
               Expanded(
-                child: searched
-                    ? SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Lottie.asset(searchNotFound),
-                            const Text(
-                              "Gözleg tapylmady !",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 22),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(top: 8, bottom: 30),
-                              child: Text(
-                                "Gözlegiňiz tapylmady täzeden synanşyň",
+                  child: searched
+                      ? SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Lottie.asset(searchNotFound),
+                              const Text(
+                                "Gözleg tapylmady !",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(color: Colors.grey, fontFamily: normsProMedium, fontSize: 18),
+                                style: TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 22),
                               ),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8, bottom: 30),
+                                child: Text(
+                                  "Gözlegiňiz tapylmady täzeden synanşyň",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Colors.grey, fontFamily: normsProMedium, fontSize: 18),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      : typeOfView
+                          ? StaggeredGridView.countBuilder(
+                              controller: scrollCtrl,
+                              staggeredTileBuilder: (index) => StaggeredTile.count(1, index % 2 == 0 ? 1.2 : 1.5),
+                              mainAxisSpacing: 8, // vertical spacing between items
+                              crossAxisSpacing: 8, // horizontal spacing between items
+                              crossAxisCount: 2, // no. of virtual columns in grid
+                              itemCount: 23,
+                              itemBuilder: (context, index) => GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => const ProductProfil());
+                                  },
+                                  child: SearchCard(index: index)),
                             )
-                          ],
-                        ),
-                      )
-                    : StaggeredGridView.countBuilder(
-                        controller: scrollCtrl,
-                        staggeredTileBuilder: (index) => StaggeredTile.count(1, index % 2 == 0 ? 1.2 : 1.5),
-                        mainAxisSpacing: 8, // vertical spacing between items
-                        crossAxisSpacing: 8, // horizontal spacing between items
-                        crossAxisCount: 2, // no. of virtual columns in grid
-                        itemCount: 23,
-                        itemBuilder: (context, index) => SearchCard(index: index),
-                      ),
-              ),
+                          : ListView.builder(
+                              itemCount: 23,
+                              controller: scrollCtrl,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => const ProductProfil());
+                                  },
+                                  child: LatestProductsCard(
+                                    index: index,
+                                    waitng: false,
+                                    agree: false,
+                                    rejected: false,
+                                  ),
+                                );
+                              },
+                            )),
             ],
           ),
-          AnimatedContainer(
-            margin: const EdgeInsets.only(top: 70, left: 15, right: 15),
-            height: showDialog ? 290 : 0,
-            width: Get.size.width,
-            curve: Curves.decelerate,
-            decoration: BoxDecoration(color: Colors.white, borderRadius: borderRadius5, boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.4), blurRadius: 15, offset: const Offset(1, 15), spreadRadius: 5)]),
-            duration: const Duration(milliseconds: 500),
-            child: ListView.separated(
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    searchController.text = "Recomended seacrh $index";
-                    searched = true;
-                    showDialog = false;
-                    setState(() {});
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Recomended seacrh $index",
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                  ),
-                );
-              },
-              itemCount: 8,
-              separatorBuilder: (BuildContext context, int index) {
-                return customDivider();
-              },
-            ),
-          )
         ],
       )),
     );
@@ -201,54 +193,67 @@ class _SearchPageState extends State<SearchPage> {
           secondChild: Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
             color: Colors.white,
-            child: TextField(
-              cursorColor: Colors.black,
-              cursorHeight: 23,
-              onTap: () {
-                setState(() {
-                  showDialog = !showDialog;
-                });
-              },
-              controller: searchController,
-              style: const TextStyle(fontFamily: normsProSemiBold, fontSize: 18),
-              decoration: InputDecoration(
-                fillColor: backgroundColor,
-                hintText: "Gözleg ....",
-                contentPadding: EdgeInsets.zero,
-                hintStyle: const TextStyle(color: Colors.grey, fontFamily: normsProMedium, fontSize: 20),
-                filled: true,
-                isDense: true,
-                suffixIcon: searchController.text.isNotEmpty
-                    ? IconButton(
-                        onPressed: () {
-                          for (int i = 0; i < value.length; i++) {
-                            if (value[i] == true) {
-                              value[i] = false;
-                            }
-                          }
-                          searchController.clear();
-                          showDialog = false;
-                          searched = false;
-                          setState(() {});
-                        },
-                        icon: const Icon(
-                          CupertinoIcons.xmark,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    cursorColor: Colors.black,
+                    cursorHeight: 23,
+                    onTap: () {
+                      setState(() {
+                        showDialog = !showDialog;
+                      });
+                    },
+                    controller: searchController,
+                    style: const TextStyle(fontFamily: normsProSemiBold, fontSize: 18),
+                    decoration: InputDecoration(
+                      fillColor: backgroundColor,
+                      hintText: "Gözleg ....",
+                      contentPadding: EdgeInsets.zero,
+                      hintStyle: const TextStyle(color: Colors.grey, fontFamily: normsProMedium, fontSize: 20),
+                      filled: true,
+                      isDense: true,
+                      suffixIcon: searchController.text.isNotEmpty
+                          ? IconButton(
+                              onPressed: () {
+                                for (int i = 0; i < value.length; i++) {
+                                  if (value[i] == true) {
+                                    value[i] = false;
+                                  }
+                                }
+                                searchController.clear();
+                                showDialog = false;
+                                searched = false;
+                                setState(() {});
+                              },
+                              icon: const Icon(
+                                CupertinoIcons.xmark,
+                                color: Colors.black,
+                              ))
+                          : const SizedBox.shrink(),
+                      prefixIcon: const Padding(
+                        padding: EdgeInsets.only(right: 15, left: 12),
+                        child: Icon(
+                          IconlyLight.search,
                           color: Colors.black,
-                        ))
-                    : const SizedBox.shrink(),
-                prefixIcon: const Padding(
-                  padding: EdgeInsets.only(right: 15, left: 12),
-                  child: Icon(
-                    IconlyLight.search,
-                    color: Colors.black,
-                    size: 26,
+                          size: 26,
+                        ),
+                      ),
+                      border: const OutlineInputBorder(borderRadius: borderRadius10, borderSide: BorderSide(color: backgroundColor)),
+                      disabledBorder: const OutlineInputBorder(borderRadius: borderRadius10, borderSide: BorderSide(color: backgroundColor)),
+                      enabledBorder: const OutlineInputBorder(borderRadius: borderRadius10, borderSide: BorderSide(color: backgroundColor)),
+                      focusedBorder: const OutlineInputBorder(borderRadius: borderRadius10, borderSide: BorderSide(color: kPrimaryColor, width: 2)),
+                    ),
                   ),
                 ),
-                border: const OutlineInputBorder(borderRadius: borderRadius10, borderSide: BorderSide(color: backgroundColor)),
-                disabledBorder: const OutlineInputBorder(borderRadius: borderRadius10, borderSide: BorderSide(color: backgroundColor)),
-                enabledBorder: const OutlineInputBorder(borderRadius: borderRadius10, borderSide: BorderSide(color: backgroundColor)),
-                focusedBorder: const OutlineInputBorder(borderRadius: borderRadius10, borderSide: BorderSide(color: kPrimaryColor, width: 2)),
-              ),
+                IconButton(
+                    onPressed: () {
+                      setState(() {
+                        typeOfView = !typeOfView;
+                      });
+                    },
+                    icon: Icon(typeOfView ? IconlyLight.category : Icons.list)),
+              ],
             ),
           ),
           firstCurve: Curves.easeInCubic,

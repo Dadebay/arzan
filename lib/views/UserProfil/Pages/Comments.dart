@@ -62,12 +62,12 @@ class CommentsPage extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 15),
                           child: Container(
                             width: 70,
-                            height: 70,
+                            height: 90,
                             decoration: const BoxDecoration(borderRadius: borderRadius5),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.asset(
-                                "assets/images/products/${index + 1}.jpg",
+                                "assets/images/products/${index + 1}.png",
                                 fit: BoxFit.cover,
                               ),
                             ),

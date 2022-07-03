@@ -57,7 +57,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
             AnimatedCrossFade(
                 firstChild: CustomTextField(labelName: "otp", controller: otpController, focusNode: otpFocusNode, requestfocusNode: phoneFocusNode, borderRadius: true, isNumber: true),
-                secondChild: Form(key: _forgot, child: PhoneNumber(mineFocus: phoneFocusNode, controller: phoneNumberController, requestFocus: otpFocusNode)),
+                secondChild: Form(
+                    key: _forgot,
+                    child: PhoneNumber(
+                      mineFocus: phoneFocusNode,
+                      controller: phoneNumberController,
+                      requestFocus: otpFocusNode,
+                      style: false,
+                    )),
                 firstCurve: Curves.easeInCubic,
                 secondCurve: Curves.fastOutSlowIn,
                 crossFadeState: otpHide ? CrossFadeState.showFirst : CrossFadeState.showSecond,

@@ -1,4 +1,5 @@
 import 'package:arzan/components/ListViewName.dart';
+import 'package:arzan/components/buttons/bookmarkButton.dart';
 import 'package:arzan/components/constants/constants.dart';
 import 'package:arzan/views/others/ProductProfil.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,12 @@ class RecomendedPart extends StatelessWidget {
                                   fit: BoxFit.fill,
                                 ),
                               )),
+                              const Positioned(
+                                  top: 8,
+                                  right: 8,
+                                  child: BookMarkButton(
+                                    color: true,
+                                  ))
                             ],
                           ),
                         ),

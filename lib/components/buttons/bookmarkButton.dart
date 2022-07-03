@@ -25,7 +25,7 @@ class _BookMarkButtonState extends State<BookMarkButton> {
           ? Container(
               padding: const EdgeInsets.all(8),
               decoration: const BoxDecoration(color: Colors.white, borderRadius: borderRadius10),
-              child: Icon(bookmarkIcon ? IconlyBold.bookmark : IconlyLight.bookmark, color: bookmarkIcon ? kPrimaryColor : Colors.black),
+              child: Icon(bookmarkIcon ? IconlyBold.heart : IconlyLight.heart, color: bookmarkIcon ? kPrimaryColor : Colors.black),
             )
           : ClipRRect(
               borderRadius: borderRadius10,

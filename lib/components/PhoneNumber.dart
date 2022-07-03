@@ -11,10 +11,12 @@ class PhoneNumber extends StatelessWidget {
     required this.mineFocus,
     required this.controller,
     required this.requestFocus,
+    required this.style,
   });
   final TextEditingController controller;
   final FocusNode mineFocus;
   final FocusNode requestFocus;
+  final bool style;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,6 +42,8 @@ class PhoneNumber extends StatelessWidget {
         onEditingComplete: () {
           requestFocus.requestFocus();
         },
+        enableSuggestions: false,
+        autocorrect: false,
         decoration: InputDecoration(
           errorMaxLines: 2,
           errorStyle: const TextStyle(fontFamily: normsProMedium),
@@ -53,27 +57,29 @@ class PhoneNumber extends StatelessWidget {
           contentPadding: const EdgeInsets.only(left: 25, top: 15, bottom: 15),
           prefixIconConstraints: const BoxConstraints(minWidth: 80),
           hintText: '65 656565 ',
+          filled: style,
+          fillColor: backgroundColor,
           alignLabelWithHint: true,
           hintStyle: const TextStyle(color: Colors.grey, fontFamily: normsProMedium),
-          border: const OutlineInputBorder(
-            borderRadius: borderRadius20,
-            borderSide: BorderSide(color: Colors.grey, width: 2),
+          border: OutlineInputBorder(
+            borderRadius: style ? borderRadius10 : borderRadius20,
+            borderSide: BorderSide(color: style ? backgroundColor : Colors.grey, width: 2),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: borderRadius20,
-            borderSide: BorderSide(color: Colors.grey.shade200, width: 2),
+            borderRadius: style ? borderRadius10 : borderRadius20,
+            borderSide: BorderSide(color: style ? backgroundColor : Colors.grey.shade200, width: 2),
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderRadius: borderRadius20,
-            borderSide: BorderSide(color: kPrimaryColor, width: 2),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: style ? borderRadius10 : borderRadius20,
+            borderSide: const BorderSide(color: kPrimaryColor, width: 2),
           ),
-          focusedErrorBorder: const OutlineInputBorder(
-            borderRadius: borderRadius20,
-            borderSide: BorderSide(color: kPrimaryColor, width: 2),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: style ? borderRadius10 : borderRadius20,
+            borderSide: const BorderSide(color: kPrimaryColor, width: 2),
           ),
-          errorBorder: const OutlineInputBorder(
-            borderRadius: borderRadius20,
-            borderSide: BorderSide(color: Colors.red, width: 2),
+          errorBorder: OutlineInputBorder(
+            borderRadius: style ? borderRadius10 : borderRadius20,
+            borderSide: const BorderSide(color: Colors.red, width: 2),
           ),
         ),
       ),

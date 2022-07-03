@@ -33,6 +33,7 @@ class Users extends StatelessWidget {
                 return BrandCard(
                   index: index,
                   name: "Page Name",
+                  followed: false,
                 );
               },
             ),

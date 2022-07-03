@@ -32,6 +32,7 @@ class SingIn extends StatelessWidget {
               mineFocus: phoneNumberFocusNode,
               controller: phoneNumberController,
               requestFocus: emailFocusNode,
+              style: false,
             ),
             CustomTextField(labelName: "email", controller: emailController, focusNode: emailFocusNode, requestfocusNode: passwordFocusNode, borderRadius: true, isNumber: false),
             CustomTextField(labelName: "password", controller: passwordController, focusNode: passwordFocusNode, requestfocusNode: fullNameFocusNode, borderRadius: true, isNumber: false),

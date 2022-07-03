@@ -15,6 +15,7 @@ class SliverAppBarMine extends StatelessWidget {
     return SliverAppBar(
         systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         expandedHeight: 300,
+        automaticallyImplyLeading: false,
         floating: false,
         pinned: true,
         centerTitle: true,

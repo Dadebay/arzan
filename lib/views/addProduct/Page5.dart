@@ -1,16 +1,33 @@
 // ignore_for_file: deprecated_member_use, file_names
 
-import 'package:arzan/components/constants/constants.dart';
 import 'package:arzan/controllers/SettingsController.dart';
 import 'package:arzan/views/BottomNavBar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:get/get.dart';
+import 'package:arzan/views/others/index.dart';
+import 'package:lottie/lottie.dart';
 
-class Page5 extends StatelessWidget {
+class Page5 extends StatefulWidget {
+  const Page5({Key? key}) : super(key: key);
+
+  @override
+  State<Page5> createState() => _Page5State();
+}
+
+class _Page5State extends State<Page5> with TickerProviderStateMixin {
   final SettingsController settingsController = Get.put(SettingsController());
 
-  Page5({Key? key}) : super(key: key);
+  late final AnimationController _controller;
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,38 +40,35 @@ class Page5 extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Lottie.asset(
+                    done,
+                    animate: true,
+                    controller: _controller,
+                    onLoaded: (composition) {
+                      _controller
+                        ..duration = composition.duration
+                        ..forward();
+                    },
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 25, left: 10, right: 10),
+                    padding: const EdgeInsets.only(bottom: 20, left: 10, right: 10),
                     child: Text(
-                      "Boldy gosuldy cykay".tr,
+                      "Maglumatlaryňyz ugradyldy.\nGaraşmagyňyzy haýyş edýäris.".tr,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        fontFamily: normsProMedium,
-                        fontSize: 22,
+                        fontFamily: normsProSemiBold,
+                        fontSize: 19,
                       ),
                     ),
                   ),
-                  RaisedButton(
-                    onPressed: () {
-                      Get.to(() => const BottomNavBar());
-                    },
-                    shape: const RoundedRectangleBorder(borderRadius: borderRadius10),
-                    color: kPrimaryColor,
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          "agree".tr,
-                          style: const TextStyle(color: Colors.white, fontSize: 22, fontFamily: normsProMedium, fontWeight: FontWeight.w600),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Icon(IconlyLight.arrowRightCircle, color: Colors.white, size: 24),
-                        )
-                      ],
-                    ),
-                  )
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: AgreeButton(onTap: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
+                        return const BottomNavBar();
+                      }));
+                    }),
+                  ),
                 ],
               ),
             ),

@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:arzan/views/UserProfil/Pages/EditWorkProfil.dart';
 import 'package:arzan/views/UserProfil/Pages/addedProducts.dart';
 import 'package:arzan/controllers/SettingsController.dart';
 import 'package:arzan/views/others/index.dart';
@@ -43,11 +44,16 @@ class UserProfil extends StatelessWidget {
             ProfilButton(
                 name: "favorite",
                 onTap: () {
-                  Get.to(() => const BookMarkPage());
+                  Get.to(() => BookMarkPage());
                 },
-                icon: IconlyLight.bookmark),
+                icon: IconlyLight.heart),
             divider(),
-            ProfilButton(name: "editWorkProfile", onTap: () {}, icon: IconlyLight.home),
+            ProfilButton(
+                name: "editWorkProfile",
+                onTap: () {
+                  Get.to(() => EditWorkProfile());
+                },
+                icon: IconlyLight.home),
             ProfilButton(
                 name: "Gosan harytlarym",
                 onTap: () {

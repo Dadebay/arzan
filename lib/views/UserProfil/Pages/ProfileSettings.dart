@@ -1,7 +1,5 @@
 // ignore_for_file: file_names, deprecated_member_use, prefer_typing_uninitialized_variables
 
-import 'package:arzan/components/CustomTextField.dart';
-import 'package:arzan/components/PhoneNumber.dart';
 import 'package:arzan/views/others/index.dart';
 
 class ProfileSettings extends StatefulWidget {
@@ -40,7 +38,12 @@ class _ProfileSettingsState extends State<ProfileSettings> {
               textpart("fullName"),
               CustomTextField(labelName: "", controller: nameController, borderRadius: true, focusNode: nameFocusNode, requestfocusNode: phoneFocusNode, isNumber: false),
               textpart("phone"),
-              PhoneNumber(mineFocus: phoneFocusNode, controller: phoneController, requestFocus: emailFocsNode),
+              PhoneNumber(
+                mineFocus: phoneFocusNode,
+                controller: phoneController,
+                requestFocus: emailFocsNode,
+                style: false,
+              ),
               textpart("email"),
               CustomTextField(labelName: "", controller: emailController, borderRadius: true, focusNode: emailFocsNode, requestfocusNode: nameFocusNode, isNumber: false),
               const SizedBox(

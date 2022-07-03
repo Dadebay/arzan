@@ -10,6 +10,7 @@ class SettingsController extends GetxController {
   final storage = GetStorage();
   RxInt bannerSelectedIndex = 0.obs; //banner setState ulanman gecirmek ucin
   RxBool agreeButton = false.obs;
+  RxBool hidePorfilImage = false.obs;
   RxBool showOTP = false.obs; // sign up otp gorkezmek ucin
   RxBool categoryList = false.obs; // Search Page app bar yokary etmek ucin
 

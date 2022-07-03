@@ -48,7 +48,7 @@ class CustomTextField extends StatelessWidget {
           errorMaxLines: 2,
           errorStyle: const TextStyle(fontFamily: normsProMedium),
           labelText: labelName.tr,
-          contentPadding: const EdgeInsets.only(left: 25, top: 20, bottom: 20),
+          contentPadding: const EdgeInsets.only(left: 25, top: 20, bottom: 20, right: 10),
           labelStyle: TextStyle(color: Colors.grey.shade500, fontFamily: normsProMedium),
           border: OutlineInputBorder(
             borderRadius: borderRadius == null

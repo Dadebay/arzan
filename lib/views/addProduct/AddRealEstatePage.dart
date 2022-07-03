@@ -11,7 +11,7 @@ class AddProductPage extends StatelessWidget {
   List page = [
     const Page3(),
     const Page4(),
-    Page5(),
+    const Page5(),
   ];
 
   Widget progressIndicator() {
@@ -37,37 +37,39 @@ class AddProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: backgroundColor,
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "Add Product".tr,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 20),
+    return Obx(() {
+      return Scaffold(
+          backgroundColor: backgroundColor,
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+              "Add Product".tr,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 20),
+            ),
+            elevation: 0,
+            backgroundColor: Colors.white,
+            automaticallyImplyLeading: false,
+            leading: addPageController.selectedPageIndex.value != 2
+                ? IconButton(
+                    onPressed: () {
+                      if (addPageController.selectedPageIndex.value > 0) {
+                        addPageController.dicrementPageIndex();
+                      } else {
+                        Get.back();
+                      }
+                    },
+                    icon: const Icon(
+                      IconlyLight.arrowLeftCircle,
+                      color: Colors.black,
+                    ))
+                : const SizedBox.shrink(),
           ),
-          elevation: 0,
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          leading: IconButton(
-              onPressed: () {
-                if (addPageController.selectedPageIndex.value > 0) {
-                  addPageController.dicrementPageIndex();
-                } else {
-                  Get.back();
-                }
-              },
-              icon: const Icon(
-                IconlyLight.arrowLeftCircle,
-                color: Colors.black,
-              )),
-        ),
-        body: Obx(() {
-          return Column(
+          body: Column(
             children: [progressIndicator(), Expanded(child: page[addPageController.selectedPageIndex.value] as Widget)],
-          );
-        }));
+          ));
+    });
   }
 }

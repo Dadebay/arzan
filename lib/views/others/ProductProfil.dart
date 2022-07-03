@@ -282,7 +282,12 @@ class _ProductProfilState extends State<ProductProfil> {
                     itemCount: 9,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemBuilder: (context, index) => SearchCard(index: index)),
+                    itemBuilder: (context, index) => GestureDetector(
+                        onTap: () {
+                          print("ass");
+                          Get.to(() => const ProductProfil());
+                        },
+                        child: SearchCard(index: index))),
               ],
             ),
           )),
@@ -407,7 +412,7 @@ class _ProductProfilState extends State<ProductProfil> {
                 return Container(
                   color: Colors.red,
                   child: Image.asset(
-                    "assets/images/profil/${index + 1}.png",
+                    "assets/images/productProfil/${index + 1}.png",
                     fit: BoxFit.cover,
                   ),
                 );

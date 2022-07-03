@@ -36,6 +36,7 @@ class Login extends StatelessWidget {
               mineFocus: phoneNumberFocusNode,
               controller: phoneNumberController,
               requestFocus: emailFocusNode,
+              style: false,
             ),
             CustomTextField(labelName: "password", controller: passwordController, focusNode: passwordFocusNode, requestfocusNode: fullNameFocusNode, borderRadius: true, isNumber: false),
             Column(

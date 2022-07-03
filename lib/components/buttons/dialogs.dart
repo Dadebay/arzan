@@ -226,3 +226,65 @@ void defaultBottomSheet({required String name, required Widget child}) {
     ),
   ));
 }
+
+Future<dynamic> selectCity({required Function() onTap}) {
+  return Get.defaultDialog(
+      barrierDismissible: false,
+      title: "selectCityTitle".tr,
+      titleStyle: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold),
+      radius: 5,
+      titlePadding: const EdgeInsets.symmetric(vertical: 14),
+      contentPadding: const EdgeInsets.only(),
+      content: Column(
+        children: [
+          customDivider(),
+          TextButton(
+            onPressed: onTap,
+            child: Text(
+              welayat[0].tr,
+              style: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
+            ),
+          ),
+          customDivider(),
+          TextButton(
+            onPressed: onTap,
+            child: Text(
+              welayat[1].tr,
+              style: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
+            ),
+          ),
+          customDivider(),
+          TextButton(
+            onPressed: onTap,
+            child: Text(
+              welayat[2].tr,
+              style: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
+            ),
+          ),
+          customDivider(),
+          TextButton(
+            onPressed: onTap,
+            child: Text(
+              welayat[3].tr,
+              style: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
+            ),
+          ),
+          customDivider(),
+          TextButton(
+            onPressed: onTap,
+            child: Text(
+              welayat[4].tr,
+              style: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
+            ),
+          ),
+          customDivider(),
+          TextButton(
+            onPressed: onTap,
+            child: Text(
+              welayat[5].tr,
+              style: const TextStyle(color: Colors.black, fontFamily: normsProSemiBold, fontSize: 16),
+            ),
+          ),
+        ],
+      ));
+}
