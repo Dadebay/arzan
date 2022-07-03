@@ -1,0 +1,68 @@
+name: arzan
+description: A new Flutter project.
+publish_to: 'none' 
+version: 1.0.0+1
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+
+dependencies:
+  url_launcher:
+  carousel_slider: ^4.0.0
+  cupertino_icons: ^1.0.2
+  curved_navigation_bar: ^1.0.3
+  flutter:
+    sdk: flutter
+  flutter_iconly: ^1.0.2
+  flutter_lints: ^1.0.0
+  concentric_transition: ^1.0.3
+  flutter_staggered_grid_view: ^0.4.0
+  get: null
+  get_storage: null
+  lottie: ^1.2.1
+  photo_view: ^0.13.0
+  rich_text_view: ^1.0.0
+  share: ^2.0.4
+  # shimmer: null
+  # vibration: ^1.7.4-nullsafety.0
+  # badges: ^2.0.2
+  # pull_to_refresh: ^2.0.0
+  # restart_app: ^1.1.0
+  dotted_border: ^2.0.0+1
+  permission_handler: ^8.3.0
+  http:
+  image_picker: ^0.8.4+4 
+  step_progress_indicator: ^1.0.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/fonts/
+    - assets/lang/
+    - assets/lottie/
+    - assets/icons/
+    - assets/images/
+    - assets/images/arzan/
+    - assets/images/banners/
+    - assets/images/brands/
+    - assets/images/products/
+    - assets/images/productProfil/
+    - assets/images/products2/
+
+  fonts:
+    - family: NormsProBold
+      fonts:
+        - asset: assets/fonts/NormsProBold.otf
+    - family: NormsProMedium
+      fonts:
+        - asset: assets/fonts/NormsProMedium.otf
+    - family: NormsProRegular
+      fonts:
+        - asset: assets/fonts/NormsProRegular.otf
+    - family: NormsProLight
+      fonts:
+        - asset: assets/fonts/NormsProLight.otf

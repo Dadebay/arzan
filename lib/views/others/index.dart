@@ -1,0 +1,15 @@
+export 'package:arzan/components/appBar.dart';
+export 'package:flutter/material.dart';
+export 'package:arzan/components/constants/constants.dart';
+export 'package:flutter_iconly/flutter_iconly.dart';
+export 'package:get/get.dart';
+export 'package:arzan/components/buttons/agreeButton.dart';
+export 'package:arzan/components/constants/widgets.dart';
+export 'package:arzan/components/buttons/dialogs.dart';
+export 'package:url_launcher/url_launcher.dart';
+export 'package:share/share.dart';
+export 'package:arzan/components/buttons/SetttingsButton.dart';
+export 'package:arzan/components/buttons/ProfilButton.dart';
+export 'package:arzan/components/CustomTextField.dart';
+export 'package:arzan/components/PhoneNumber.dart';
+export 'package:flutter/services.dart';
